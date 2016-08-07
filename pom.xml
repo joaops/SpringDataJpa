@@ -9,6 +9,17 @@
     
     <name>SpringDataJpa</name>
     
+    <developers>
+        <developer>
+            <id>siqueira</id>
+            <name>João Paulo Siqueira</name>
+            <email>joaopaulo@gmail.com</email>
+            <roles>
+                <role>Project developer</role>
+            </roles>
+        </developer>
+    </developers>
+    
     <properties>
         <spring.version>4.3.2.RELEASE</spring.version>
         <spring-data.version>Hopper-RELEASE</spring-data.version>
