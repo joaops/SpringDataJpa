@@ -38,7 +38,7 @@ public class Book implements Serializable {
     @Column(name = "PAGE_COUNT")
     private Integer page_count;
     
-    @Column(name = "PRICE", scale = 2, length = 5)
+    @Column(name = "PRICE", scale = 2, precision = 5)
     private BigDecimal price;
     
     public Book() {
