@@ -14,17 +14,18 @@
             <id>siqueira</id>
             <name>João Paulo Siqueira</name>
             <email>joaopaulo1094@gmail.com</email>
+            <organizationUrl>https://joaops.com.br/</organizationUrl>
             <roles>
-                <role>Project developer</role>
+                <role>Project Developer</role>
             </roles>
         </developer>
     </developers>
     
     <properties>
-        <spring.version>5.1.6.RELEASE</spring.version>
-        <spring-data.version>2.1.6.RELEASE</spring-data.version>
-        <h2.version>1.4.199</h2.version>
-        <hibernate.version>5.4.2.Final</hibernate.version>
+        <spring.version>5.3.10</spring.version>
+        <spring-data.version>2.5.5</spring-data.version>
+        <h2.version>1.4.200</h2.version>
+        <hibernate.version>5.5.7.Final</hibernate.version>
         
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
