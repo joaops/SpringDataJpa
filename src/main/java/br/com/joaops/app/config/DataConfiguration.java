@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -33,8 +34,12 @@ public class DataConfiguration {
     
     @Bean
     public DataSource dataSource() {
-        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        return builder.setType(EmbeddedDatabaseType.H2).build();
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/database");
+        dataSource.setUsername("usuario");
+        dataSource.setPassword("senha");
+        return dataSource;
     }
     
     @Bean
@@ -43,8 +48,11 @@ public class DataConfiguration {
         vendorAdapter.setGenerateDdl(true);
         
         Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.hbm2ddl.auto", "create-drop");
-        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
+        // jpaProperties.setProperty("hibernate.show_sql", "true"); // mostrar os comandos SQL no Log
+        // jpaProperties.setProperty("hibernate.format_sql", "true"); // formatar os comandos
+        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect"); // Dialeto do MySQL 8
+        // jpaProperties.put("hibernate.hbm2ddl.auto", "create-drop"); // create-drop vai criar e deletar a tabela
+        jpaProperties.put("hibernate.hbm2ddl.auto", "update"); // update vai manter a tabela, exitem outras opções como o validate
         
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setDataSource(dataSource());
